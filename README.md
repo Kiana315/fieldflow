@@ -6,7 +6,7 @@ The planned MVP helps internal teams coordinate technician assignments, track wo
 
 ## Project Status
 
-Day 1 requirements analysis is complete. Requirements v0.1 is the approved initial MVP baseline. Application implementation has not started.
+Day 3 backend setup is complete and verified locally: FastAPI health checks and API docs respond successfully, and the backend connects to PostgreSQL running in Docker. Requirements v0.1 remains the approved initial MVP baseline. See [Day 3 setup and verification](docs/DAY3_BACKEND.md) for commands and validation results. Business models and APIs are not implemented yet.
 
 ## Target Users
 
