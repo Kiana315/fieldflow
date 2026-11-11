@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
 from sqlalchemy.exc import SQLAlchemyError
-
+from app.routers.auth import router as auth_router
 from app.config import get_settings
 from app.database import check_database, get_engine
 
@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="FieldFlow API", version="0.1.0", lifespan=lifespan)
-
+app.include_router(auth_router)
 
 @app.get("/health", tags=["health"])
 def health() -> dict[str, str]:

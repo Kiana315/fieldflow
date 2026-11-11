@@ -2,7 +2,9 @@ from functools import lru_cache
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
+from collections.abc import Generator
 
+from sqlalchemy.orm import Session
 from app.config import get_settings
 
 
@@ -18,3 +20,8 @@ def get_engine() -> Engine:
 def check_database() -> None:
     with get_engine().connect() as connection:
         connection.execute(text("SELECT 1")).scalar_one()
+
+
+def get_db() -> Generator[Session, None, None]:
+    with Session(get_engine()) as session:
+        yield session

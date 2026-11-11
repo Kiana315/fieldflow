@@ -18,6 +18,13 @@ class Settings(BaseSettings):
     postgres_db: str = "fieldflow"
     postgres_user: str = "fieldflow"
     postgres_password: SecretStr
+    jwt_secret_key: SecretStr
+    jwt_algorithm: str = "HS256"
+    access_token_expire_minutes: int = Field(
+        default=30,
+        gt=0,
+        le=1440,
+    )
 
     @property
     def database_url(self) -> URL:
